@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 /*
  * FollowCurve tracks time for a trip along a QuadraticBezierCurve. Its Update
@@ -17,13 +18,18 @@ public class FollowCurve : MonoBehaviour
     {
         _elapsed += Time.deltaTime;
         float t = Mathf.Clamp01(_elapsed / duration);
-        // TODO Slice 2.1: move this object to the curve at t.
+        // Slice 2.1: move this object to the curve at t.
         // Check: the follower travels along the line. Tick triggerReset to repeat.
         // Next: Slice 2.2 in Bezier/QuadraticBezierMath.cs.
+        Vector3 newPosition = curve.SamplePoint(t);
+        gameObject.transform.position = newPosition;
+        
 
-        // TODO Slice 2.4: face this object along the curve, using your 2.3 tangent.
+        // Slice 2.4: face this object along the curve, using your 2.3 tangent.
         // Check: the follower faces along the curve, with no zero-direction warning.
         // Next: Slice 3.1 in Bezier/CubicBezierMath.cs. </> end of Slice 2
+        Vector3 tangent = curve.SampleTangent(t);
+        gameObject.transform.LookAt(tangent);
 
         if (triggerReset)
         {

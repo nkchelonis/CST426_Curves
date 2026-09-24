@@ -18,37 +18,48 @@ public class CubicBezierCurve : MonoBehaviour
 
     void Start()
     {
-        // TODO Slice 3.4: draw this cubic in its LineRenderer with numSamples points.
+        // Slice 3.4: draw this cubic in its LineRenderer with numSamples points.
         // Space them evenly in t and include both endpoints.
         // Check: restart Play Mode. The line matches the gizmos and reaches p0 and p3.
         // Next: Slice 3.5 in Bezier/CubicBezierMath.cs.
+        LineRenderer lr = GetComponent<LineRenderer>();
+        lr.positionCount = numSamples;
+        for (int i = 0; i < numSamples; i++)
+        {
+            float t = (float)i / (numSamples - 1);
+            Vector3 position = SamplePoint(t);
+            lr.SetPosition(i, position);
+        }
     }
 
     void OnDrawGizmos()
     {
         if (p0 == null || p1 == null || p2 == null || p3 == null) return;
-        // TODO Slice 3.3: draw this cubic's gizmos with your CurveGizmos helper.
+        // Slice 3.3: draw this cubic's gizmos with your CurveGizmos helper.
         // Check: four markers, an open three-segment polygon, and a curve that reaches
         // both ends. Move a point outside Play Mode; everything follows.
         // Next: Slice 3.4 in Start.
+        CurveGizmos.Draw(numSamples, SamplePoint, p0, p1, p2, p3);
     }
 
     public Vector3 SamplePoint(float t)
     {
-        // TODO Slice 3.2: sample your cubic evaluator at the control points'
+        // Slice 3.2: sample your cubic evaluator at the control points'
         // current world positions.
         // Check: SceneCurve_SamplesCurrentWorldPointsWithoutCallbacks(True,False) passes.
         // Next: Slice 3.3 in OnDrawGizmos.
-        return Vector3.zero;
+        Vector3 sample = CubicBezierMath.SamplePoint(p0.position, p1.position, p2.position, p3.position, t);
+        return sample;
     }
 
     public Vector3 SampleTangent(float t)
     {
-        // TODO Slice 3.6: sample your cubic derivative at the control points'
+        // Slice 3.6: sample your cubic derivative at the control points'
         // current world positions. Do not normalize it.
         // Check: SceneCurve_SamplesCurrentWorldPointsWithoutCallbacks(True,True) passes.
         // All four cubic tests pass.
         // Next: open Main Game, Slice 4.1 in Game/ThrownAxe.cs. </> end of Slice 3
-        return Vector3.zero;
+        Vector3 sampleTangent = CubicBezierMath.SampleTangent(p0.position, p1.position, p2.position, p3.position, t);
+        return sampleTangent;
     }
 }

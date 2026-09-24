@@ -700,6 +700,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4224446090252340998, guid: 431dc9e515a2ff34191fbef9c97c1225, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 4224446090252340998, guid: 431dc9e515a2ff34191fbef9c97c1225, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.51
+      objectReference: {fileID: 0}
     - target: {fileID: 6447675096373041789, guid: 431dc9e515a2ff34191fbef9c97c1225, type: 3}
       propertyPath: m_Name
       value: Cubic Bezier

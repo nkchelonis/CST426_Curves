@@ -33,7 +33,7 @@ public static class CurveGizmos
         }
         
 
-        // TODO Slice 1.6: draw the curve in white with numSamples points from samplePoint.
+        // Slice 1.6: draw the curve in white with numSamples points from samplePoint.
         // Space them evenly in t and include both endpoints.
         // Check: the curve reaches both endpoints and follows moved points.
         // Next: Slice 1.7 in QuadraticBezierCurve.cs, Start.
