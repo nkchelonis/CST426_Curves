@@ -30,9 +30,9 @@ public static class QuadraticBezierMath
         // Check: DeCasteljauQuadratic_SamplesTangentFromFinalInterpolationSegment passes.
         // Next: Slice 2.3 in Demo/QuadraticBezierCurve.cs.
         
-        //I'm not sure how to find the derivative of the nested lerp things, this is the
-        //derivative of I think Bernstein's math version
-        Vector3 tangent = (-2*(1-t)*p0) + (2*(1-2*t)*p1) + (2 * t * p2);
+        Vector3 A = Vector3.Lerp(p0, p1, t);
+        Vector3 B = Vector3.Lerp(p1, p2, t);
+        Vector3 tangent = 2f * (B - A);
 
         return tangent;
     }

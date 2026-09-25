@@ -29,7 +29,8 @@ public class FollowCurve : MonoBehaviour
         // Check: the follower faces along the curve, with no zero-direction warning.
         // Next: Slice 3.1 in Bezier/CubicBezierMath.cs. </> end of Slice 2
         Vector3 tangent = curve.SampleTangent(t);
-        gameObject.transform.LookAt(tangent);
+        transform.forward = tangent; //other way to make it look at the correct direction
+        //gameObject.transform.LookAt(tangent);
 
         if (triggerReset)
         {

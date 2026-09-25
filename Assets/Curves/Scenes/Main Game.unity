@@ -1110,17 +1110,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 118.5734
       objectReference: {fileID: 0}
-    - target: {fileID: 8035799169309193475, guid: e8b9f61d426e84845979e0f0dc0a4ab4, type: 3}
-      propertyPath: bowAmount
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8035799169309193475, guid: e8b9f61d426e84845979e0f0dc0a4ab4, type: 3}
-      propertyPath: throwImpulse
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 8035799169309193475, guid: e8b9f61d426e84845979e0f0dc0a4ab4, type: 3}
-      propertyPath: returnDuration
-      value: 0.5
+    - target: {fileID: 6604788211383694070, guid: e8b9f61d426e84845979e0f0dc0a4ab4, type: 3}
+      propertyPath: spinSpeed
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 6999358129310414010, guid: e8b9f61d426e84845979e0f0dc0a4ab4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1185,6 +1177,18 @@ PrefabInstance:
     - target: {fileID: 7347594818347921774, guid: e8b9f61d426e84845979e0f0dc0a4ab4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 109.52787
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035799169309193475, guid: e8b9f61d426e84845979e0f0dc0a4ab4, type: 3}
+      propertyPath: bowAmount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035799169309193475, guid: e8b9f61d426e84845979e0f0dc0a4ab4, type: 3}
+      propertyPath: throwImpulse
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8035799169309193475, guid: e8b9f61d426e84845979e0f0dc0a4ab4, type: 3}
+      propertyPath: returnDuration
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8172921655139685484, guid: e8b9f61d426e84845979e0f0dc0a4ab4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

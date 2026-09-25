@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /*
@@ -15,13 +16,20 @@ public class QuadraticBezierCurve : MonoBehaviour
 
     public int numSamples = 10;
 
+    private LineRenderer lr;
+    
     void Start()
     {
         // Slice 1.7: draw this curve in its LineRenderer with numSamples points.
         // Space them evenly in t and include both endpoints.
         // Check: restart Play Mode. The line matches the Scene-view gizmos.
         // Next: Slice 2.1 in FollowCurve.cs. </> end of Slice 1
-        LineRenderer lr = GetComponent<LineRenderer>();
+        lr = GetComponent<LineRenderer>();
+        
+    }
+
+    private void Update()
+    {
         lr.positionCount = numSamples;
         for (int i = 0; i < numSamples; i++)
         {
@@ -29,12 +37,6 @@ public class QuadraticBezierCurve : MonoBehaviour
             Vector3 position = SamplePoint(t);
             lr.SetPosition(i, position);
         }
-
-        // TODO Slice 7.3 (upgrade 1.7): draw the line with power-basis evaluation.
-        // Prepare the coefficients once, outside the sample loop.
-        // Check: restart Play Mode. The line still matches the gizmos,
-        // and every sample uses power evaluation.
-        // Next: Slice 7.4 in Bezier/QuadraticBezierMath.cs.
     }
 
     void OnDrawGizmos()
@@ -70,9 +72,10 @@ public class QuadraticBezierCurve : MonoBehaviour
         // Next: Slice 2.4 in FollowCurve.cs.
         Vector3 sampleTangent = QuadraticBezierMath.SampleTangentDeCasteljau(p0.position, p1.position, p2.position, t);
 
-        // TODO Slice 6.4 (upgrade 2.3): switch to your Bernstein derivative.
+        // Slice 6.4 (upgrade 2.3): switch to your Bernstein derivative.
         // Check: the follower faces the same way. This method calls Bernstein; keep it.
         // Next: Slice 7.1 in Bezier/QuadraticBezierMath.cs. </> end of Slice 6
+        sampleTangent = QuadraticBezierMath.SampleTangentBernstein(p0.position, p1.position, p2.position, t);
         return sampleTangent;
     }
 }
