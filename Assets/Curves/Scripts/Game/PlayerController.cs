@@ -109,6 +109,7 @@ public class PlayerController : MonoBehaviour
             
             axe.transform.position = QuadraticBezierMath.SamplePointBernstein(p0, p1, p2, t);
             axe.transform.Rotate(Vector3.forward, axe.spinSpeed * Time.deltaTime, Space.Self);
+            axe.trailRenderer.emitting = true;
 
             yield return null;
             elapsedTime += Time.deltaTime;

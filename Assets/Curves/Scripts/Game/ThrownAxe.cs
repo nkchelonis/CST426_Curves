@@ -11,12 +11,18 @@ public class ThrownAxe : MonoBehaviour
     public Rigidbody rigidbody;
     public Collider axeCollider;
     public float spinSpeed = 2000f;
+    public TrailRenderer trailRenderer;
     
     Transform _hand;
     Vector3 _heldLocalPosition;
     Quaternion _heldLocalRotation;
 
     public Vector3 CatchPosition => _hand.TransformPoint(_heldLocalPosition);
+
+    void Start()
+    {
+        trailRenderer.emitting = false;
+    }
 
     public void Launch(Vector3 direction, float impulse, CharacterController thrower)
     {
@@ -30,6 +36,7 @@ public class ThrownAxe : MonoBehaviour
         
         rigidbody.isKinematic = false;
         axeCollider.enabled = true;
+        trailRenderer.emitting = true;
         
         
         rigidbody.AddForce(direction * impulse, ForceMode.VelocityChange); //Impulse uses mass, VelocityChange does not
@@ -43,6 +50,7 @@ public class ThrownAxe : MonoBehaviour
         transform.SetLocalPositionAndRotation(_heldLocalPosition, _heldLocalRotation);
         rigidbody.isKinematic = true;
         axeCollider.enabled = false;
+        trailRenderer.emitting = false;
         // TODO Slice 8.3 (catch hook): stop the spin and restore the held look.
         // Check: throw and recall both spin. Two full cycles end with the original held look.
         // Next: polish, networking, and your showcase video. </> end of Slice 8
@@ -51,6 +59,7 @@ public class ThrownAxe : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         rigidbody.isKinematic = true;
+        trailRenderer.emitting = false;
         
     }
 }
